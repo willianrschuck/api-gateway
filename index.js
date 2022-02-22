@@ -8,8 +8,8 @@ const { verifyToken } = require('./middleware/jwt.middleware')
 
 const app = express();
 
-const alunosProxy = proxy('http://localhost:3001');
-const loginProxy = proxy('http://localhost:3002');
+const alunosProxy = proxy(process.env.URI_ALUNOS_SERVICE);
+const loginProxy = proxy(process.env.URI_LOGIN_SERVICE);
 
 app.use(logger('dev'));
 
@@ -21,4 +21,4 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
