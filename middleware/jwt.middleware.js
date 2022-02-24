@@ -5,7 +5,7 @@ const verifyToken = (req, res, next) => {
     if (!token) {
         return res.status(401).json({ 'auth': 'false', 'message': 'Token não informado' });
     }
-    JWT.verify(token, process.env.SECRET, (err, decoded) => {
+    JWT.verify(token, process.env.PUBLIC_KEY, (err, decoded) => {
         if (err) {
             return res.status(401).json({ 'auth': 'false', 'message': 'Token inválido' });
         }

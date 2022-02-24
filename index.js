@@ -9,13 +9,13 @@ const { verifyToken } = require('./middleware/jwt.middleware')
 const app = express();
 
 const alunosProxy = proxy(process.env.URI_ALUNOS_SERVICE);
-const disciplinasProxY = proxy(process.env.URI_DISCIPLINAS_SERVICE);
+const disciplinasProxy = proxy(process.env.URI_DISCIPLINAS_SERVICE);
 const loginProxy = proxy(process.env.URI_LOGIN_SERVICE);
 
 app.use(logger('dev'));
 
 app.all('/alunos(/*)?', [ verifyToken ], alunosProxy);
-app.all('/disciplinas(/*)?', [ verifyToken ], disciplinasProxY);
+app.all('/disciplinas(/*)?', [ verifyToken ], disciplinasProxy);
 app.all('/login(/*)?', loginProxy);
 
 app.use(helmet());
