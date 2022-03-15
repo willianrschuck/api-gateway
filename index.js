@@ -16,6 +16,7 @@ app.use(logger('dev'));
 
 app.all('/alunos(/*)?', [ verifyToken ], alunosProxy);
 app.all('/disciplinas(/*)?', [ verifyToken ], disciplinasProxy);
+app.all('/user(/*)', [ verifyToken ], loginProxy);
 app.all('/login(/*)?', loginProxy);
 
 app.use(helmet());
